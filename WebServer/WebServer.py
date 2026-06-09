@@ -1,5 +1,8 @@
 from WebServer import app
 from flask import send_from_directory
+from Classes import TO_DO_List
+
+Current_List = TO_DO_List.To_Do()
 
 @app.route("/")
 def LoginPage ():
@@ -18,4 +21,5 @@ def Dashboard ():
 def dash_files(filename):
     return send_from_directory("Dashboard", filename) 
 
-app.run()
+if __name__ == "__main__":
+    app.run()
