@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='LoginPage/style.css') }}">
+    <script src="{{ url_for('static', filename='LoginPage/script.js') }}"></script>
+</head>
+
+<body>
+    <div class="FormLogin">
+        <Form action="/" method="POST">
+            <h1  class="header1">
+                Login Form
+            </h1>
+            <h3>
+                username
+            </h3>
+            <input type="text" id="username" name="user">
+            <h3>
+                password
+            </h3>
+            <input type="password" id="password" name="passw">
+            <br>
+            <input type="submit" value="Press To Login" >
+        </Form>
+    </div>
+</body>
+
+</html>
+
