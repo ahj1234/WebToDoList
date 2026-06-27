@@ -64,6 +64,23 @@ form input[type="text"]:focus {
     background: #fff;
 }
 
+/* Checkbox */
+form label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+}
+
+form input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #4f6ef7;
+    cursor: pointer;
+}
+
 /* Submit button */
 form input[type="submit"] {
     width: 100%;
@@ -78,29 +95,65 @@ form input[type="submit"] {
     transition: background 0.2s, transform 0.1s;
 }
 
-form input[type="submit"]:hover {
-    background: #3a57d4;
-}
+form input[type="submit"]:hover  { background: #3a57d4; }
+form input[type="submit"]:active { transform: scale(0.98); }
 
-form input[type="submit"]:active {
-    transform: scale(0.98);
-}
-
-p {
+/* ── Task List Container ───────────────────────────────── */
+ul {
+    list-style: none;
     max-width: 560px;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px 28px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #444;
-    white-space: pre-wrap;
-    word-break: break-word;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-p:empty::before {
-    content: "No tasks yet. Add one above ✨";
+/* ── Each Task Card ────────────────────────────────────── */
+ul li {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.95rem;
+    color: #333;
+    border-left: 4px solid #4f6ef7;
+    transition: box-shadow 0.2s;
+}
+
+ul li:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.11);
+}
+
+ul li strong {
+    font-size: 1rem;
+    color: #1a1a2e;
+    min-width: 80px;
+}
+
+ul li span.time {
+    font-size: 0.82rem;
+    color: #888;
+    background: #f0f2f5;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+ul li span.desc {
+    flex: 1;
+    color: #555;
+}
+
+ul li span.status {
+    font-size: 1.1rem;
+}
+
+/* Empty state */
+ul li:only-child:has(span.empty) {
+    border-left-color: #ccc;
     color: #aaa;
     font-style: italic;
+    justify-content: center;
 }
