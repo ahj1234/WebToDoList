@@ -10,13 +10,10 @@ passw = "1234"
 
 @app.route("/", methods=["GET", "POST"])
 def LoginPage():
-
     if request.method == "POST":
-
         if request.form["user"] == user and request.form["passw"] == passw:
             return redirect("/Dashboard")
-
-        else :
+        else:
             return """
         <script>
             alert('Username or Password is incorrect');
@@ -25,12 +22,17 @@ def LoginPage():
         """
     elif request.method == "GET":
         return render_template("LoginPage/index.html")
-    else :
-        pass
 
-@app.route("/Dashboard")
+@app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
-    return render_template("Dashboard/index.html")
+    if request.method == "POST":
+        subject = request.form["subject"]
+        time_range = request.form["TimeRange"]
+        description = request.form["description"]
+
+        Current_List.add_new_task(time_range, subject, description)
+
+    return render_template("Dashboard/index.html", Current_List=Current_List.show())
 
 if __name__ == "__main__":
     app.run(debug=True)

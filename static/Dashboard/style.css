@@ -1,0 +1,106 @@
+/* ── Reset & Base ──────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* ── Page Header ───────────────────────────────────────── */
+body::before {
+    content: "📋 My Task Dashboard";
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+/* ── Add Task Form ─────────────────────────────────────── */
+form {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    max-width: 560px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Text inputs */
+form input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #dde1ea;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+    background: #f8f9fb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+form input[type="text"]:focus {
+    border-color: #4f6ef7;
+    box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.12);
+    background: #fff;
+}
+
+/* Submit button */
+form input[type="submit"] {
+    width: 100%;
+    padding: 11px;
+    background: #4f6ef7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+form input[type="submit"]:hover {
+    background: #3a57d4;
+}
+
+form input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+p {
+    max-width: 560px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+p:empty::before {
+    content: "No tasks yet. Add one above ✨";
+    color: #aaa;
+    font-style: italic;
+}
