@@ -20,6 +20,7 @@
                 <span class="time">Period</span>
                 <span class="desc">Description</span>
                 <span class="status">Is Done</span>
+                <span>Delete</span>
             </li>
             {% for id, task in Current_List.items() %}
                 <li>
@@ -27,10 +28,14 @@
                     <strong>{{ task.Subject }}</strong>
                     <span class="time">{{ task.Time_Range }}</span>
                     <span class="desc">{{ task.Description }}</span>
-                    <span class="status">{% if task.done %}✅{% else %}⬜{% endif %}</span>
+                    <span class="status"><input Type="checkbox"></span>
+                    
+                    <form action="/delete/{{ id }}" method="POST">
+                        <input type="submit" value="🗑 Delete">
+                    </form>
                 </li>
             {% else %}
-                <li><span class="empty">هیچ تسکی وجود نداره</span></li>
+                <li><span class="empty">Empty List</span></li>
             {% endfor %}
         </ul>
     </body>

@@ -34,5 +34,10 @@ def Dashboard():
 
     return render_template("Dashboard/index.html", Current_List=Current_List.show())
 
+@app.route("/delete/<task_id>", methods=["POST"])
+def delete_task(task_id):
+    Current_List.rem(int(task_id))
+    return redirect("/Dashboard")
+
 if __name__ == "__main__":
     app.run(debug=True)

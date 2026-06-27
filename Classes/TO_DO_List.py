@@ -6,7 +6,6 @@ class Task:
         self.Time_Range = Time_Range
         self.Subject = Subject
         self.Description = Description
-        self.done = False
 
     def show(self):
         return self.Time_Range, self.Subject, self.Description
