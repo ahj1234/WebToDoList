@@ -5,6 +5,18 @@
         <script src="{{ url_for('static', filename='Dashboard/script.js') }}"></script>
     </head>
     <body>
-        <h1> heelo </h1>
+        <form>
+            <h3>Add New Task</h3>
+            <input type="text" name="subject" value="subject">
+            <input type="text" name="TimeRange" value="TimeRange">
+            <input type="text" name="description" value="description">
+            <input type="hidden" name="agree" value="no">
+            <input type="checkbox" name="agree" value="yes">
+            <input type="submit">
+        </form>
+        <br>
+        <p>
+            {{Current_List}}
+        </p>
     </body>
 </html>
