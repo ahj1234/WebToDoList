@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard/style.css') }}">
-        <script src="{{ url_for('static', filename='Dashboard/script.js') }}"></script>
-    </head>
-    <body>
-        <form action="/Dashboard" method="POST">
-            <h3>Add New Task</h3>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard/style.css') }}">
+    <script src="{{ url_for('static', filename='Dashboard/script.js') }}"></script>
+</head>
+<body>
+    <header class="top-bar">📋 My Tasks</header>
+
+    <main class="container">
+
+        <form action="/Dashboard" method="POST" class="add-form">
+            <h3 class="form-title">Add New Task</h3>
             <input type="text" name="subject" placeholder="Subject">
             <input type="text" name="TimeRange" placeholder="Time Range">
             <input type="text" name="description" placeholder="Description">
             <input type="submit" value="Add Task">
         </form>
-        <br>
-        <ul>
-            <li>
-                <strong>taskID</strong>
-                <strong>Subject</strong>
-                <span class="time">Period</span>
-                <span class="desc">Description</span>
-                <span class="status">Is Done</span>
-                <span>Delete</span>
+
+        <ul class="task-list">
+            <li class="task-header">
+                <span class="col-id">ID</span>
+                <span class="col-subject">Subject</span>
+                <span class="col-time">Period</span>
+                <span class="col-desc">Description</span>
+                <span class="col-status">Done</span>
+                <span class="col-action">Delete</span>
             </li>
+
             {% for id, task in Current_List.items() %}
-                <li>
-                    <strong>{{ task.taskID }}</strong>
-                    <strong>{{ task.Subject }}</strong>
-                    <span class="time">{{ task.Time_Range }}</span>
-                    <span class="desc">{{ task.Description }}</span>
-                    <span class="status"><input Type="checkbox"></span>
-                    
-                    <form action="/delete/{{ id }}" method="POST">
-                        <input type="submit" value="🗑 Delete">
-                    </form>
-                </li>
+            <li class="task-card">
+                <span class="col-id">{{ task.taskID }}</span>
+                <strong class="col-subject">{{ task.Subject }}</strong>
+                <span class="col-time">{{ task.Time_Range }}</span>
+                <span class="col-desc">{{ task.Description }}</span>
+                <span class="col-status">
+                    <input type="checkbox">
+                </span>
+                <form action="/delete/{{ id }}" method="POST" class="delete-form">
+                    <button type="submit" class="btn-delete">🗑</button>
+                </form>
+            </li>
             {% else %}
-                <li><span class="empty">Empty List</span></li>
+            <li class="task-empty">
+                <span>No tasks yet — add one above!</span>
+            </li>
             {% endfor %}
         </ul>
-    </body>
+
+    </main>
+</body>
 </html>
